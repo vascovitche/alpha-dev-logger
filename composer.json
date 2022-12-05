@@ -11,7 +11,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "AlfaDevTeam\\Logger\\Tests\\": "tests/"
+            "AlphaDevTeam\\Logger\\Tests\\": "tests/"
         }
     },
     "authors": [
@@ -35,7 +35,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "AlfaDevTeam\\Logger\\Providers\\LoggerServiceProvider"
+                "AlphaDevTeam\\Logger\\Providers\\LoggerServiceProvider"
             ]
         }
     }
