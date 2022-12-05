@@ -14,7 +14,7 @@ class LoggerServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../config/db-logging.php', 'logging.channels.db'
+            __DIR__.'/../config/logging.php', 'logging.channels'
         );
     }
 
