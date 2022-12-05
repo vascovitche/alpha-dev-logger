@@ -1,0 +1,43 @@
+{
+    "name": "alpha-dev-team/logger",
+    "description": "Logger via db records, telegram and files. Based on Laravel logger.",
+    "type": "library",
+    "license": "MIT",
+
+    "autoload": {
+        "psr-4": {
+            "AlphaDevTeam\\Logger\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AlfaDevTeam\\Logger\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Tymur Vaskovych",
+            "email": "devascovitche@gmail.com",
+            "homepage": "https://github.com/vascovitche"
+        }
+    ],
+
+    "require": {
+        "php": "^8.1",
+        "laravel/framework": "~6.0|~7.0|~8.0|^9.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "4.*|5.*|6.*|7.*"
+    },
+
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "laravel": {
+            "providers": [
+                "AlfaDevTeam\\Logger\\Providers\\ServiceProvider"
+            ]
+        }
+    }
+}
+
