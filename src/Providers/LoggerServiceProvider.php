@@ -13,9 +13,9 @@ class LoggerServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(
-            __DIR__.'/../config/logging-alpha.php', 'logging-alpha'
-        );
+        $this->publishes([
+            __DIR__.'/../config/logging-alpha.php' => config_path('logging-alpha.php'),
+        ], 'logger-config');
     }
 
     /**
