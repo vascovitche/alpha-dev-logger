@@ -35,7 +35,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "AlfaDevTeam\\Logger\\Providers\\ServiceProvider"
+                "AlfaDevTeam\\Logger\\Providers\\LoggerServiceProvider"
             ]
         }
     }
