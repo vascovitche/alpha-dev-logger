@@ -23,9 +23,10 @@ class LoggerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadMigrationsFrom(__DIR__.'../../database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         $this->publishes([
-            __DIR__.'/../../config/logging-alpha.php' => config_path('logging-alpha.php'),
-        ]);
+            __DIR__.'/../config/logging-alpha.php' => config_path('logging-alpha.php'),
+        ], 'logger-config');
+
     }
 }
