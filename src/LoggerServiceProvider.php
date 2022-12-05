@@ -2,6 +2,7 @@
 
 namespace AlphaDevTeam\Logger;
 
+
 use Illuminate\Support\ServiceProvider;
 
 class LoggerServiceProvider extends ServiceProvider
