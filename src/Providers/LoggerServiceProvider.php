@@ -14,7 +14,7 @@ class LoggerServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../config/db-logging.php', 'services.mailgun'
+            __DIR__.'/../config/logging-alpha.php', 'logging-alpha'
         );
     }
 
