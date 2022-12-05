@@ -1,4 +1,4 @@
-'driver' => 'custom',
-'via' => AlphaDevLogger::class,
-'level' => env('LOG_LEVEL', 'debug'),
+'domain' => env('MAILGUN_DOMAIN'),
+'secret' => env('MAILGUN_SECRET'),
+'public' => env('MAILGUN_PUBLIC')
 
