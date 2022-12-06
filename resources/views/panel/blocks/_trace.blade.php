@@ -8,6 +8,5 @@
                 <li class="m-2">{{ $item }}</li>
             @endforeach
         </ul>
-
     </div>
 </div>

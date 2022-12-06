@@ -13,28 +13,30 @@ class LogsController
     {
         $logs = Log::query();
         $dates = $this->getDates($logs);
-        $logs = $logs->filter(new LogFilter())->orderBy('created_at', 'desc')->paginate(20);
+
+        $data = $this->filterLogsByDate($logs);
 
         $statuses = collect(ErrorStatus::cases())->pluck('name', 'value');
 
-        return view('logs.index', [
-            'logs' => $logs,
+        return view('logger::panel.index', [
+            'logs' => $data,
             'dates' => $dates,
             'statuses' => $statuses
         ]);
     }
 
-    public function show(Log $log)
+    public function show($log)
     {
         $statuses = collect(ErrorStatus::cases())->pluck('name', 'value');
+        $log = Log::query()->whereId($log)->first();
 
-        return view('logs.show', [
+        return view('logger::panel.show', [
             'log' => $log,
             'statuses' => $statuses
         ]);
     }
 
-    public function changeStatus(Log $log)
+    public function changeStatus($log)
     {
         request()->validate([
             'status' => [
@@ -43,17 +45,16 @@ class LogsController
         ]);
 
         $status = ErrorStatus::fromName(request()->input('status'));
-        $log->update(['status' => $status]);
+        Log::query()->whereId($log)->update(['status' => $status]);
 
         return back();
     }
 
-    public function destroy(Log $log)
+    public function destroy($log)
     {
-        $log->delete();
+        Log::query()->whereId($log)->delete();
 
-        return redirect()->route('admin.log.index');
-
+        return redirect()->route('log.index');
     }
 
     private function getDates($logs): array
@@ -69,6 +70,17 @@ class LogsController
         }
 
         return $dates;
+    }
+
+    private function filterLogsByDate($logs)
+    {
+        $date = request()->get('date');
+
+        if ($date != null) {
+            return $logs->whereDate('created_at', $date)->latest('id')->paginate(20);
+        } else {
+            return $logs->latest('id')->paginate(20);
+        }
     }
 
 }

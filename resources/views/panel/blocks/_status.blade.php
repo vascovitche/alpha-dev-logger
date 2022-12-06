@@ -15,7 +15,7 @@
     <div class="card-body">
         <div>
             <b class="font-weight-bold">Status:</b>
-            @if($log->status == \App\Enums\ErrorStatus::NEW)
+            @if($log->status == \AlphaDevTeam\Logger\Enums\ErrorStatus::NEW)
                 <span class="badge badge-danger">{{ strtolower($log->status->name) }}</span>
             @else
                 <span class="badge badge-warning">{{ strtolower($log->status->name) }}</span>
@@ -44,7 +44,7 @@
 
         <div>
             <b class="font-weight-bold">Lavel Name:</b>
-            {{ $log->level_name->value }}
+            {{ $log->level_name }}
         </div>
 
         <div>

@@ -6,12 +6,11 @@
     </div>
     <div class="card-body">
         <div>
-            <form action="{{ route('admin.log.status', $log->id) }}" method="post">
+            <form action="{{ route('log.status', [$log->id]) }}" method="post">
                 @csrf
                 @method('PUT')
                 <div class="input-group">
-                    @include('admin::components.input_group', [
-                         'type' => 'select',
+                    @include('logger::panel.blocks._select', [
                          'name' => 'status',
                          'required' => true,
                          'label' => false,
@@ -27,7 +26,7 @@
         </div>
 
         <div class="mt-3">
-            <form action="{{ route('admin.log.destroy', $log->id) }}" method="post">
+            <form action="{{ route('log.destroy', $log->id) }}" method="post">
                 @csrf
                 @method('DELETE')
                 <button class="btn btn-block btn-danger"

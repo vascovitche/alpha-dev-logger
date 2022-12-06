@@ -1,4 +1,4 @@
-@extends('admin::layouts.master')
+@extends('logger::panel.layouts.master')
 
 @push('styles')
     <style>
@@ -10,8 +10,7 @@
 
 @section('title')
     Logs
-    @include('admin::logs.blocks._dates')
-
+    @include('logger::panel.blocks._dates')
 @stop
 
 @section('breadcrumb')
@@ -40,12 +39,12 @@
                             <tr>
                                 <td>{{ $log->created_at }}</td>
                                 <td class="long-box">
-                                    <a class="post-title" href="{{ route('admin.log.show', $log->id) }}">
+                                    <a class="post-title" href="{{ route('log.show', $log->id) }}">
                                         {{ $log->message }}
                                     </a>
                                 </td>
                                 <td>
-                                    @if($log->status == \App\Enums\ErrorStatus::NEW)
+                                    @if($log->status == \AlphaDevTeam\Logger\Enums\ErrorStatus::NEW)
                                         <span class="badge badge-danger">{{ strtolower($log->status->name) }}</span>
                                     @else
                                         <span class="badge badge-warning">{{ strtolower($log->status->name) }}</span>
@@ -56,20 +55,20 @@
                                 <td class="long-box">{{ $log->file }}</td>
                                 <td>
                                     <div class="d-inline-block">
-                                        <a class="btn btn-primary btn-sm" href="{{ route('admin.log.show', $log->id) }}">
+                                        <a class="btn btn-primary btn-sm" href="{{ route('log.show', $log->id) }}">
                                             See Details
                                         </a>
                                     </div>
 
                                     <div class="d-inline-block">
-                                        <form action="{{ route('admin.log.destroy', $log->id) }}" method="post">
+                                        <form action="{{ route('log.destroy', $log->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
                                             <button class="btn btn-sm btn-danger"
                                                     data-ask="1" data-title="Delete log"
                                                     data-message="Are you sure you want to delete the log - '{{ $log->message }}'?"
                                                     data-type="danger">
-                                                <i class="fas fa-trash"></i>Delete
+                                                Delete
                                             </button>
                                         </form>
                                     </div>
