@@ -31,7 +31,7 @@ class RefreshLogsTable extends Command
     private function totallyDestroyOld()
     {
         $edgeDateTime = Carbon::now()
-            ->subMonths(config('logging-alpha.db.remove_in_months.totally'))
+            ->subMonths(config('logger-alpha.db.remove_in_months.totally'))
             ->format('Y-m-d');
 
         Log::whereDate('created_at', '<=', $edgeDateTime)->forceDelete();
@@ -40,7 +40,7 @@ class RefreshLogsTable extends Command
     private function softDestroyOff()
     {
         $edgeDateTime = Carbon::now()
-            ->subMonths(config('logging-alpha.db.remove_in_months.soft'))
+            ->subMonths(config('logger-alpha.db.remove_in_months.soft'))
             ->format('Y-m-d');
 
         Log::whereDate('created_at', '<=', $edgeDateTime)->delete();

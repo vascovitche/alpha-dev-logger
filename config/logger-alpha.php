@@ -13,6 +13,14 @@ return [
             'soft' => 1,
             'totally' => 3,
         ]
+    ],
+
+    'panel' => [
+        'go_back_route' => '/',
+
+        'path' => 'admin',
+
+        'middleware' => ['web'],
     ]
 
 ];

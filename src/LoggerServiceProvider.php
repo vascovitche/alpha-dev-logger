@@ -2,8 +2,7 @@
 
 namespace AlphaDevTeam\Logger;
 
-
-use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
 class LoggerServiceProvider extends ServiceProvider
@@ -25,13 +24,35 @@ class LoggerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Paginator::useBootstrapFive();
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
-        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'logger');
+        $this->registerMigration();
+        $this->registerRoutes();
+        $this->registerViews();
+        $this->registerConfig();
+    }
 
+    protected function registerMigration()
+    {
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+    }
+
+    protected function registerRoutes()
+    {
+        Route::group([
+            'prefix' => config('logger-alpha.panel.path'),
+            'middleware' => config('logger-alpha.panel.middleware', 'web'),
+        ], function () {
+            $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+        });
+    }
+    protected function registerViews()
+    {
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'logger');
+    }
+
+    protected function registerConfig()
+    {
         $this->publishes([
-            __DIR__ . '/../config/logging-alpha.php' => config_path('logging-alpha.php'),
+            __DIR__ . '/../config/logger-alpha.php' => config_path('logger-alpha.php'),
         ], 'logger-config');
     }
 }

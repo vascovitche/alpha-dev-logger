@@ -17,7 +17,7 @@ class AlphaDevTelegramHandler extends TelegramBotHandler
             null,
             null,
             null,
-            config('logging-alpha.telegram.split_long_messages')
+            config('logger-alpha.telegram.split_long_messages')
         );
     }
 

@@ -33,7 +33,7 @@ class TelegramFormatter extends NormalizerFormatter
             "\n\nFILE:\n" . $exception['file'] .
             "\n\n" . $extra;
 
-        if (config('logging-alpha.telegram.trace')) {
+        if (config('logger-alpha.telegram.trace')) {
             $data .= "\n\nTRACE:\n" . implode(",\n", $exception['trace']);
         }
 
