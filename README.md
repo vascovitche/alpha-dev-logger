@@ -1,18 +1,16 @@
 # Alpha-Dev-Logger
 
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
-
-# Requirements
+## Requirements
 
 <ul>
     <li>PHP v8.1+</li>
 </ul>
 
-# Description
+## Description
 Logger via db records, telegram and files. Based on standard Laravel logger. It also utilizes the Monolog library.
 Plus, Alpha-Dev-Logger comes with a simple administration panel for reading, change status and delete log records.
 
-# Installation
+## Installation
 
 First step is install Alpha-Dev-Logger via the Composer command
 ```shell
@@ -29,9 +27,9 @@ Also need run migration for new logs table:
 php artisan migrate
 ```
 
-# Configuration
+## Configuration
 
-## General
+### General
 Since Alpha-Dev-Logger based on standard Laravel logger,
 some configurations need to be made in logging.php in <b>channels</b> array.
 For convenience, all needed changes in logging.php contain in logger-alpha.php in <b>channels</b> array.
@@ -93,11 +91,11 @@ And the last. Add to logging.php to array <b>channels.stack.channels</b> channel
 ],
 ```
 
-## Panel
+### Panel
 Alpha-Dev-Logger comes with a simple administration panel for reading, change status and delete log records.
 You can make some changes for panel rotes in logger-alpha.php.
 
-## Fresh Logs
+### Fresh Logs
 For refresh logs db retrieved special command RefreshLogsTable.
 You can configure edge date time for soft delete records and edge date time for totally delete records in logger-alpha.php in <b>db.remove_in_months</b>
 
