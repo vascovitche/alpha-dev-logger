@@ -2,6 +2,8 @@
 
 namespace AlphaDevTeam\Logger;
 
+use AlphaDevTeam\Logger\Console\Commands\RefreshLogsTable;
+use AlphaDevTeam\Logger\Console\Commands\SetDbLoggerConfig;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
@@ -28,6 +30,7 @@ class LoggerServiceProvider extends ServiceProvider
         $this->registerRoutes();
         $this->registerViews();
         $this->registerConfig();
+        $this->registerConsoleCommands();
     }
 
     protected function registerMigration()
@@ -54,5 +57,14 @@ class LoggerServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../config/logger-alpha.php' => config_path('logger-alpha.php'),
         ], 'logger-config');
+    }
+
+    protected function registerConsoleCommands()
+    {
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                RefreshLogsTable::class,
+            ]);
+        }
     }
 }
