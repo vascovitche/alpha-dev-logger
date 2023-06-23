@@ -20,7 +20,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{config('laratrust.panel.go_back_route')}}">← Go Back</a>
+                        <li class="breadcrumb-item"><a href="{{config('logger-alpha.panel.go_back_route')}}">← Go Back</a>
                         </li>
                         @yield('breadcrumb')
                     </ol>
