@@ -11,7 +11,7 @@ class DbFormatter extends NormalizerFormatter
         parent::__construct();
     }
 
-    public function format(array $record)
+    public function format($record)
     {
         $record = parent::format($record);
         return $this->convertToDataBase($record);

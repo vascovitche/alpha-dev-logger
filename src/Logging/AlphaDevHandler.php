@@ -16,7 +16,7 @@ class AlphaDevHandler extends AbstractProcessingHandler
     /**
      * @inheritDoc
      */
-    protected function write(array $record): void
+    protected function write($record): void
     {
         $log = new Log();
         $log->fill($record['formatted']);
