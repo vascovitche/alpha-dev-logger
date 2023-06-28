@@ -3,6 +3,7 @@
 namespace AlphaDevTeam\Logger\Logging;
 
 use Monolog\Formatter\NormalizerFormatter;
+use Monolog\LogRecord;
 
 class TelegramFormatter extends NormalizerFormatter
 {
@@ -11,10 +12,10 @@ class TelegramFormatter extends NormalizerFormatter
         parent::__construct();
     }
 
-    public function format($record)
+    public function format(LogRecord $record)
     {
         $record = parent::format($record);
-        return $this->convertToMessage($record);
+        return $this->convertToMessage($record->toArray());
     }
 
     protected function convertToMessage(array $record): string

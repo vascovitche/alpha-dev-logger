@@ -3,7 +3,6 @@
 namespace AlphaDevTeam\Logger\Logging;
 
 use Monolog\Handler\TelegramBotHandler;
-use Monolog\Logger;
 
 class AlphaDevTelegramHandler extends TelegramBotHandler
 {
@@ -12,16 +11,18 @@ class AlphaDevTelegramHandler extends TelegramBotHandler
         parent::__construct(
             $apiKey,
             $channel,
-            Logger::DEBUG,
+            Level::Debug,
             true,
             null,
             null,
             null,
-            config('logger-alpha.telegram.split_long_messages')
+            config('logger-alpha.telegram.split_long_messages'),
+            false,
+            null
         );
     }
 
-    protected function getDefaultFormatter(): TelegramFormatter
+    protected function formatter(): TelegramFormatter
     {
         return new TelegramFormatter();
     }

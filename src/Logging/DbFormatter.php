@@ -3,6 +3,7 @@
 namespace AlphaDevTeam\Logger\Logging;
 
 use Monolog\Formatter\NormalizerFormatter;
+use Monolog\LogRecord;
 
 class DbFormatter extends NormalizerFormatter
 {
@@ -11,10 +12,10 @@ class DbFormatter extends NormalizerFormatter
         parent::__construct();
     }
 
-    public function format($record)
+    public function format(LogRecord $record)
     {
         $record = parent::format($record);
-        return $this->convertToDataBase($record);
+        return $this->convertToDataBase($record->toArray());
     }
 
     protected function convertToDataBase(array $record)
