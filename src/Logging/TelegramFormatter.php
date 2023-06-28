@@ -15,7 +15,7 @@ class TelegramFormatter extends NormalizerFormatter
     public function format(LogRecord $record)
     {
         $record = parent::format($record);
-        return $this->convertToMessage($record->toArray());
+        return $this->convertToMessage($record);
     }
 
     protected function convertToMessage(array $record): string

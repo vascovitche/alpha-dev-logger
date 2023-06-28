@@ -15,7 +15,7 @@ class DbFormatter extends NormalizerFormatter
     public function format(LogRecord $record)
     {
         $record = parent::format($record);
-        return $this->convertToDataBase($record->toArray());
+        return $this->convertToDataBase($record);
     }
 
     protected function convertToDataBase(array $record)

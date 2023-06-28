@@ -7,7 +7,7 @@ use Monolog\Handler\AbstractProcessingHandler;
 use Monolog\Level;
 use Monolog\LogRecord;
 
-class AlphaDevHandler extends AbstractProcessingHandler
+class AlphaDevDBHandler extends AbstractProcessingHandler
 {
     public function __construct($level = Level::Debug, bool $bubble = true)
     {
@@ -20,12 +20,8 @@ class AlphaDevHandler extends AbstractProcessingHandler
     protected function write(LogRecord $record): void
     {
         $log = new Log();
-        $log->fill($record->toArray()['formatted']);
+        $log->fill($record->formatted);
         $log->save();
     }
 
-    protected function formatter(): DbFormatter
-    {
-        return new DbFormatter();
-    }
 }
