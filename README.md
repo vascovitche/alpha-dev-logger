@@ -40,7 +40,7 @@ Set in logging.php in <b>channels</b>
 ```php
 'db' => [
     'driver' => 'custom',
-    'via' => \AlphaDevTeam\Logger\Logging\AlphaDevLogger::class,
+    'via' => \AlphaDevTeam\Logger\Logging\AlphaDevDBLogger::class,
     'level' => env('LOG_LEVEL', 'debug'),
 ],
 ```
