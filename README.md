@@ -86,7 +86,7 @@ And the last. Add to logging.php to array <b>channels.stack.channels</b> channel
 ```php
 'stack' => [
     'driver' => 'stack',
-    'channels' => ['daily', 'dev', 'telegram'],
+    'channels' => ['daily', 'db', 'telegram'],
     'ignore_exceptions' => false,
 ],
 ```
